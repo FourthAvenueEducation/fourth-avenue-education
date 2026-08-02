@@ -518,6 +518,113 @@ main > section{ padding: 110px 0; }
 }
 .faq-answer p{ padding-bottom: 26px; color: var(--ink-soft); font-size: 15.5px; max-width: 62ch; }
 
+/* ---------------------------------- acceptances ------------------------------- */
+.acceptance-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-bottom: 36px;
+}
+.acceptance-tile{
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 30px 20px 26px;
+  text-align: center;
+  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+.acceptance-tile:hover{
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px -20px rgba(22,35,58,0.4);
+}
+.acceptance-badge{
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--navy);
+  background: linear-gradient(160deg, #EFE7D3, #E4D8B8);
+  border: 1px solid var(--line);
+}
+.acceptance-tile.featured{
+  border-color: var(--gold);
+  border-width: 1.5px;
+  background: linear-gradient(165deg, #FFFDF8, #FBF1DC);
+  padding: 36px 22px 30px;
+  position: relative;
+  box-shadow: 0 18px 36px -24px rgba(185,135,58,0.55);
+}
+.acceptance-tile.featured::before{
+  content: "";
+  position: absolute;
+  top: 0; left: 20px; right: 20px;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-deep));
+}
+.acceptance-tile.featured .acceptance-badge{
+  width: 68px;
+  height: 68px;
+  font-size: 16px;
+  color: var(--navy);
+  background: var(--paper);
+  border: 2px solid var(--gold);
+  box-shadow: 0 6px 16px -8px rgba(185,135,58,0.5);
+}
+.acceptance-tile.featured:hover{ transform: translateY(-6px); }
+.acceptance-name{
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.acceptance-tile.featured .acceptance-name{ font-size: 19.5px; font-weight: 500; }
+.acceptance-count{
+  margin-top: 9px;
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  font-weight: 700;
+}
+.acceptance-extra{
+  display: none;
+}
+.acceptance-grid.is-open .acceptance-extra{
+  display: block;
+  animation: fadeUp .4s ease both;
+}
+@keyframes fadeUp{
+  from{ opacity: 0; transform: translateY(6px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+.acceptances-toggle{ margin: 0 auto; display: flex; }
+.acceptances-toggle .chev{ transition: transform .25s ease; }
+.acceptances-toggle[aria-expanded="true"] .chev{ transform: rotate(90deg); }
+
+.acceptances-lede{ margin-top: 4px; }
+
+/* ---------------------------------- faq more ----------------------------------- */
+.faq-extra{
+  display: none;
+}
+.faq-extra.is-open{ display: block; }
+.faq-more-toggle{
+  margin: 30px auto 0;
+  display: flex;
+  border-bottom: none;
+}
+.faq-more-toggle .chev{ transition: transform .25s ease; }
+.faq-more-toggle[aria-expanded="true"] .chev{ transform: rotate(90deg); }
+
 /* ---------------------------------- contact ------------------------------------ */
 .contact{ background: var(--paper); border-top: 1px solid var(--line); }
 .contact-inner{
@@ -580,6 +687,7 @@ main > section{ padding: 110px 0; }
   .package-grid{ grid-template-columns: repeat(2, 1fr); }
   .addon-grid{ grid-template-columns: repeat(2, 1fr); }
   .team-grid{ grid-template-columns: repeat(2, 1fr); }
+  .acceptance-grid{ grid-template-columns: repeat(3, 1fr); }
   .why-inner{ grid-template-columns: 1fr; }
   .why-list{ grid-template-columns: 1fr 1fr; }
   .testimonial-grid{ grid-template-columns: 1fr; }
@@ -614,6 +722,7 @@ main > section{ padding: 110px 0; }
   .package-grid{ grid-template-columns: 1fr; }
   .addon-grid{ grid-template-columns: 1fr; }
   .team-grid{ grid-template-columns: 1fr; }
+  .acceptance-grid{ grid-template-columns: repeat(2, 1fr); }
   .why-list{ grid-template-columns: 1fr; }
   .footer-inner{ flex-direction: column; align-items: flex-start; }
 }

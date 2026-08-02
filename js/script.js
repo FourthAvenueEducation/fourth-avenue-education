@@ -71,6 +71,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // ---------- "View All Acceptances" toggle ----------
+  var acceptancesToggle = document.getElementById('acceptancesToggle');
+  var acceptanceGrid = document.getElementById('acceptanceGrid');
+
+  if (acceptancesToggle && acceptanceGrid) {
+    acceptancesToggle.addEventListener('click', function () {
+      var isOpen = acceptanceGrid.classList.toggle('is-open');
+      acceptancesToggle.setAttribute('aria-expanded', String(isOpen));
+      acceptancesToggle.firstChild.textContent = isOpen ? 'Show Fewer Acceptances ' : 'View All Acceptances ';
+    });
+  }
+
+  // ---------- "More Questions" FAQ toggle ----------
+  var faqMoreToggle = document.getElementById('faqMoreToggle');
+  var faqExtra = document.getElementById('faqExtra');
+
+  if (faqMoreToggle && faqExtra) {
+    faqMoreToggle.addEventListener('click', function () {
+      var isOpen = faqExtra.classList.toggle('is-open');
+      faqMoreToggle.setAttribute('aria-expanded', String(isOpen));
+      faqMoreToggle.firstChild.textContent = isOpen ? 'Fewer Questions ' : 'More Questions ';
+    });
+  }
+
   // ---------- contact form (front-end only demo) ----------
   var form = document.getElementById('contactForm');
   var formNote = document.getElementById('formNote');
