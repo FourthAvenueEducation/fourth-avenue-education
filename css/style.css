@@ -278,6 +278,27 @@ main > section{ padding: 110px 0; }
 
 .philosophy{ background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 
+/* ---------------------------------- about us -------------------------------- */
+.about-inner{
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 64px;
+}
+.about .section-head{ margin-bottom: 0; }
+.about-copy p{
+  font-size: 16.5px;
+  color: var(--ink);
+  margin-bottom: 22px;
+  max-width: 62ch;
+}
+.about-copy p:first-child{
+  font-family: var(--serif);
+  font-size: 21px;
+  color: var(--navy);
+  font-style: italic;
+}
+.about-copy p:last-child{ margin-bottom: 0; }
+
 /* ---------------------------------- pillars -------------------------------- */
 .pillar-grid{
   display: grid;
@@ -682,6 +703,7 @@ main > section{ padding: 110px 0; }
 
 /* ================================= responsive ==================================== */
 @media (max-width: 980px){
+  .about-inner{ grid-template-columns: 1fr; gap: 28px; }
   .pillar-grid{ grid-template-columns: 1fr; gap: 36px; }
   .advisor-model{ grid-template-columns: 1fr; }
   .package-grid{ grid-template-columns: repeat(2, 1fr); }

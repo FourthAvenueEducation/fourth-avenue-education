@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // ---------- contact form (front-end only demo) ----------
+  // ---------- contact form (submits to Formspree — see form's action attribute) ----------
   var form = document.getElementById('contactForm');
   var formNote = document.getElementById('formNote');
 
@@ -113,14 +113,29 @@ document.addEventListener('DOMContentLoaded', function () {
       submitBtn.textContent = 'Sending…';
       submitBtn.disabled = true;
 
-      // Simulated submission — replace with a real endpoint when ready.
-      setTimeout(function () {
-        formNote.style.color = '';
-        formNote.textContent = "Thank you — we'll be in touch within 1–2 business days to schedule your consultation.";
-        submitBtn.textContent = 'Book a Consultation';
-        submitBtn.disabled = false;
-        form.reset();
-      }, 700);
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            formNote.style.color = '';
+            formNote.textContent = "Thank you — we'll be in touch within 1–2 business days to schedule your consultation.";
+            form.reset();
+          } else {
+            formNote.style.color = '#B23A3A';
+            formNote.textContent = "Something went wrong sending your message. Please email us directly at info@4thavenue.org.";
+          }
+        })
+        .catch(function () {
+          formNote.style.color = '#B23A3A';
+          formNote.textContent = "Something went wrong sending your message. Please email us directly at info@4thavenue.org.";
+        })
+        .finally(function () {
+          submitBtn.textContent = 'Book a Consultation';
+          submitBtn.disabled = false;
+        });
     });
   }
 
